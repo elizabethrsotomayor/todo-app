@@ -12,7 +12,7 @@ class TodoList extends Component {
   addTask(task) {
     let newTask = { ...task, id: uuidv4() };
     this.setState((state) => ({
-      tasks: [...state.task, newTask],
+      tasks: [...state.tasks, newTask],
     }));
   }
 
