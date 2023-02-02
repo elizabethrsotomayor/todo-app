@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NewTodoForm from "./NewTodoForm";
+import Todo from "./Todo";
 import { v4 as uuidv4 } from "uuid";
 
 class TodoList extends Component {
@@ -19,6 +20,9 @@ class TodoList extends Component {
   render() {
     return (
       <div>
+        {this.state.tasks.map((task) => (
+          <Todo key={task.id} id={task.id} task={task.task} />
+        ))}
         <NewTodoForm addTask={this.addTask} />
       </div>
     );
