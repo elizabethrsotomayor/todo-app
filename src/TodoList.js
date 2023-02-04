@@ -48,21 +48,25 @@ class TodoList extends Component {
   }
 
   render() {
+    let todos = this.state.tasks.map((task) => (
+      <div className="TodoList-item" key={task.id} id={task.id}>
+        <Todo
+          key={task.id}
+          id={task.id}
+          task={task.task}
+          completed={task.completed}
+          removeTask={this.removeTask}
+          updateTask={this.updateTask}
+          toggleTodo={this.toggleCompletion}
+        />
+      </div>
+    ));
     return (
-      <div>
-        {this.state.tasks.map((task) => (
-          <div className="TodoList-item" key={task.id} id={task.id}>
-            <Todo
-              key={task.id}
-              id={task.id}
-              task={task.task}
-              completed={task.completed}
-              removeTask={this.removeTask}
-              updateTask={this.updateTask}
-              toggleTodo={this.toggleCompletion}
-            />
-          </div>
-        ))}
+      <div className="TodoList">
+        <h1>
+          Todo List <span>A Simple React Todo List App</span>
+        </h1>
+        <ul>{todos}</ul>
         <NewTodoForm addTask={this.addTask} />
       </div>
     );
